@@ -1,0 +1,47 @@
+[
+    {
+      "trainName": "Express Line",
+      "departureStation": "New York",
+      "arrivalStation": "Boston",
+      "departureTime": "2024-01-15T08:00:00",
+      "arrivalTime": "2024-01-15T12:00:00",
+      "passengerName": "John Doe",
+      "seatNumber": "A1",
+      "ticketPrice": 49.99,
+      "bookingDate": "2024-01-10T09:30:00",
+      "status": "Confirmed",
+      "classType": "Economy",
+      "contactNumber": "+1234567890",
+      "features": ["WiFi", "Power Outlet", "Reclining Seats"]
+    },
+    {
+      "trainName": "Luxury Express",
+      "departureStation": "Chicago",
+      "arrivalStation": "Los Angeles",
+      "departureTime": "2024-02-20T10:00:00",
+      "arrivalTime": "2024-02-21T18:00:00",
+      "passengerName": "Jane Smith",
+      "seatNumber": "B5",
+      "ticketPrice": 199.99,
+      "bookingDate": "2024-02-10T14:00:00",
+      "status": "Pending",
+      "classType": "Business",
+      "contactNumber": "+0987654321",
+      "features": ["Meal Service", "WiFi", "Sleeper Berth"]
+    },
+    {
+      "trainName": "Regional Line",
+      "departureStation": "Houston",
+      "arrivalStation": "Dallas",
+      "departureTime": "2024-03-05T06:30:00",
+      "arrivalTime": "2024-03-05T09:30:00",
+      "passengerName": "Alex Johnson",
+      "seatNumber": "C12",
+      "ticketPrice": 29.99,
+      "bookingDate": "2024-03-01T11:00:00",
+      "status": "Cancelled",
+      "classType": "Economy",
+      "contactNumber": "+1122334455",
+      "features": ["WiFi", "Reclining Seats"]
+    }
+  ]
