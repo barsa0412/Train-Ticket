@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const trainTicketController = require('../controllers/trainTicketController'); // Adjust the path as needed
+const trainTicketController = require('../controllers/ticketController'); // Adjust the path as needed
 
 // Define routes for train ticket reservations
 
