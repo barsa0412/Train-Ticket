@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 });
 
 // Use room routes with prefix '/api'
-app.use('/api', roomRoutes);
+app.use('/api', ticketRoutes);
 
 // Start the server
 app.listen(PORT, () => {

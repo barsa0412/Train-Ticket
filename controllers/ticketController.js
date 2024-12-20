@@ -1,4 +1,4 @@
-const TrainTicketReservation = require('../models/TrainTicketReservation'); // Adjust the path to your model
+const TrainTicketReservation = require('../models/ticketModels'); // Adjust the path to your model
 
 // Create a new train ticket reservation
 exports.createReservation = async (req, res) => {
