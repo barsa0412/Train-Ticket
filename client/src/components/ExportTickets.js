@@ -16,7 +16,7 @@ const ExportTickets = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('/api/tickets')
+    axios.get('https://barsa0412-trainticketre-uj1iwpbmlci.ws-us117.gitpod.io//api/tickets')
       .then((res) => {
         setTickets(res.data);
         setLoading(false);

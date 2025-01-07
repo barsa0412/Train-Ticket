@@ -25,7 +25,8 @@ const CreateTicket = () => {
     e.preventDefault();
 
     axios
-      .post('/api/tickets', ticket)
+      .post('https://barsa0412-trainticketre-uj1iwpbmlci.ws-us117.gitpod.io/api/tickets')
+      
       .then((res) => {
         setTicket({
           passenger_name: '',
