@@ -1,13 +1,22 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose")
 
 const connectDB = async () => {
-    try {
-        await mongoose.connect('mongodb://localhost:27017/mydatabase');
-        console.log('Connected to MongoDB');
-    } catch (err) {
-        console.error('Failed to connect to MongoDB', err);
-        process.exit(1);
-    }
-};
+  try {
+    mongoose.set("strictQuery", true)
+    await mongoose.connect(process.env.MONGO_ATLAS_URL, {
+      useNewUrlParser: true,
+    })
+    .then(() => {
+      console.log("Successfully connected to MongoDB Atlas");
+    })
+  }
+  catch (err) {
+    console.error(err.message)
+    console.log("FIX THE DB CONNECTIVITY CODE OR MONGODB URL/USERNAME/PASSWORD!!!")
+    // process.exit(1)
+  }
+}
 
-module.exports = connectDB;
+module.exports = connectDB
+
+// green-barracuda-tux

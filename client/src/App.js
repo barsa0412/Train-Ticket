@@ -67,12 +67,11 @@ import Footer from './components/Footer';
 import CreateTicket from './components/CreateTicket';
 import ShowTicketList from './components/ShowTicketList';
 import ShowTicketDetails from './components/ShowTicketDetails';
-// import UpdateBookInfo from './components/UpdateBookInfo';
+import UpdateTicketInfo from './components/UpdateTicketInfo';
 import Homepage from './components/Homepage';
 // import NotesPage from './components/NotesPage'; // Import NotesPage component
-// import ExportPage from './components/ExportPage';
 // import QRCodePage from './components/QRCodePage';
-// import SearchBooks from './components/SearchBooks';
+import SearchTickets from './components/SearchTickets';
 
 import calmOceanTheme from './theme/calmOcean';
 
@@ -88,8 +87,9 @@ const App = () => {
               <Route exact path='/' element={<Homepage />} />
               <Route path='/ticket-list' element={<ShowTicketList />} />
               <Route path='/create-ticket' element={<CreateTicket />} />
-              {/* <Route path='/edit-book/:id' element={<UpdateBookInfo />} /> */}
+              <Route path='/edit-ticket/:id' element={<UpdateTicketInfo />} />
               <Route path='/show-ticket/:id' element={<ShowTicketDetails />} />
+              <Route path="/search" element={<SearchTickets />} /> 
               {/* <Route path='/notes/*' element={<NotesPage />} />
               <Route path="/export" element={<ExportPage />} />
               <Route path="/qr-codes" element={<QRCodePage />} />
