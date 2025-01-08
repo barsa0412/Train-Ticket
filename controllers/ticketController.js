@@ -3,11 +3,22 @@ const TrainTicketReservation = require('../models/ticketModels'); // Adjust the 
 // Create a new train ticket reservation
 exports.createReservation = async (req, res) => {
   try {
-    const newReservation = new TrainTicketReservation(req.body);
-    const savedReservation = await newReservation.save();
-    res.status(201).json(savedReservation);
+    let newReservation = new TrainTicketReservation({
+      passenger_name: req.body.passenger_name,
+            passenger_email: req.body.passenger_email,
+            train_number: req.body.train_number,
+            train_name: req.body.train_name,
+          departure_station : req.body.departure_station,
+           arrival_station : req.body.arrival_station,
+           seat_number : req.body.seat_number,
+           class : req.body.class
+    } 
+     );
+
+   savedReservation = await savedReservation.save();
+    res.send(savedReservation)
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(400).send( error.message );
   }
 };
 

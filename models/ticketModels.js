@@ -24,14 +24,7 @@ const TrainTicketReservationSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  departure_time: {
-    type: Date,
-    required: true
-  },
-  arrival_time: {
-    type: Date,
-    required: true
-  },
+ 
   seat_number: {
     type: String
   },
@@ -39,19 +32,8 @@ const TrainTicketReservationSchema = new mongoose.Schema({
     type: String,
     enum: ['First Class', 'Second Class', 'Sleeper', 'General'],
     required: true
-  },
-  fare: {
-    type: Number,
-    required: true
-  },
-  booking_date: {
-    type: Date,
-    default: Date.now
-  },
-  updated_date: {
-    type: Date,
-    default: Date.now
   }
+ 
 });
 
 module.exports = TrainTicketReservation = mongoose.model('train_ticket_reservation', TrainTicketReservationSchema);
