@@ -1,5 +1,6 @@
+// 
+
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,14 +8,19 @@ import axios from 'axios';
 
 const CreateTicket = () => {
   const navigate = useNavigate();
+
   const [ticket, setTicket] = useState({
     passenger_name: '',
-    age: '',
+    passenger_email: '',
     train_number: '',
+    train_name: '',
     departure_station: '',
     arrival_station: '',
-    journey_date: '',
-    seat_class: '',
+    departure_time: '',
+    arrival_time: '',
+    seat_number: '',
+    class: '',
+    fare: '',
   });
 
   const onChange = (e) => {
@@ -25,20 +31,23 @@ const CreateTicket = () => {
     e.preventDefault();
 
     axios
-      .post('https://barsa0412-trainticketre-uj1iwpbmlci.ws-us117.gitpod.io/api/tickets')
-      
+      .post('/api/tickets', ticket)
       .then((res) => {
         setTicket({
           passenger_name: '',
-          age: '',
+          passenger_email: '',
           train_number: '',
+          train_name: '',
           departure_station: '',
           arrival_station: '',
-          journey_date: '',
-          seat_class: '',
+          departure_time: '',
+          arrival_time: '',
+          seat_number: '',
+          class: '',
+          fare: '',
         });
 
-        toast.success('Ticket reserved successfully!', {
+        toast.success('Ticket created successfully!', {
           position: 'top-right',
           autoClose: 5000,
           hideProgressBar: false,
@@ -51,12 +60,13 @@ const CreateTicket = () => {
         });
 
         setTimeout(() => {
-          navigate('/');
+          navigate('/'); // Navigate to the homepage after the success message
         }, 5000);
       })
       .catch((err) => {
-        console.error('Error in CreateTicket!', err);
-        toast.error('Something went wrong, try again!', {
+        console.error('Error creating ticket:', err);
+
+        toast.error('Error creating ticket. Please try again.', {
           position: 'top-right',
           autoClose: 5000,
           hideProgressBar: false,
@@ -71,126 +81,167 @@ const CreateTicket = () => {
   };
 
   return (
-    <div className="CreateTicket">
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        transition={Slide}
-      />
+    <div className='CreateTicket'>
+      <ToastContainer />
 
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8 m-auto">
-            <br />
-            <Link to="/" className="btn btn-outline-warning float-left">
-              Show Ticket List
-            </Link>
-          </div>
-          <div className="col-md-8 m-auto">
-            <h1 className="display-4 text-center">Reserve Train Ticket</h1>
-            <p className="lead text-center">Create new train ticket reservation</p>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-8 m-auto'>
+            <h1 className='display-4 text-center'>Add Train Ticket</h1>
+            <p className='lead text-center'>Create a new ticket</p>
 
             <form noValidate onSubmit={onSubmit}>
-              <div className="form-group">
+              <div className='form-group'>
                 <input
-                  type="text"
-                  placeholder="Passenger Name"
-                  name="passenger_name"
-                  className="form-control"
+                  type='text'
+                  placeholder='Passenger Name'
+                  name='passenger_name'
+                  className='form-control'
                   value={ticket.passenger_name}
                   onChange={onChange}
+                  required
                 />
               </div>
               <br />
 
-              <div className="form-group">
+              <div className='form-group'>
                 <input
-                  type="number"
-                  placeholder="Age"
-                  name="age"
-                  className="form-control"
-                  value={ticket.age}
+                  type='email'
+                  placeholder='Passenger Email'
+                  name='passenger_email'
+                  className='form-control'
+                  value={ticket.passenger_email}
                   onChange={onChange}
+                  required
                 />
               </div>
               <br />
 
-              <div className="form-group">
+              <div className='form-group'>
                 <input
-                  type="text"
-                  placeholder="Train Number"
-                  name="train_number"
-                  className="form-control"
+                  type='text'
+                  placeholder='Train Number'
+                  name='train_number'
+                  className='form-control'
                   value={ticket.train_number}
                   onChange={onChange}
+                  required
                 />
               </div>
               <br />
 
-              <div className="form-group">
+              <div className='form-group'>
                 <input
-                  type="text"
-                  placeholder="Departure Station"
-                  name="departure_station"
-                  className="form-control"
+                  type='text'
+                  placeholder='Train Name'
+                  name='train_name'
+                  className='form-control'
+                  value={ticket.train_name}
+                  onChange={onChange}
+                />
+              </div>
+              <br />
+
+              <div className='form-group'>
+                <input
+                  type='text'
+                  placeholder='Departure Station'
+                  name='departure_station'
+                  className='form-control'
                   value={ticket.departure_station}
                   onChange={onChange}
+                  required
                 />
               </div>
               <br />
 
-              <div className="form-group">
+              <div className='form-group'>
                 <input
-                  type="text"
-                  placeholder="Arrival Station"
-                  name="arrival_station"
-                  className="form-control"
+                  type='text'
+                  placeholder='Arrival Station'
+                  name='arrival_station'
+                  className='form-control'
                   value={ticket.arrival_station}
                   onChange={onChange}
+                  required
                 />
               </div>
               <br />
 
-              <div className="form-group">
+              <div className='form-group'>
                 <input
-                  type="date"
-                  placeholder="Journey Date"
-                  name="journey_date"
-                  className="form-control"
-                  value={ticket.journey_date}
+                  type='datetime-local'
+                  placeholder='Departure Time'
+                  name='departure_time'
+                  className='form-control'
+                  value={ticket.departure_time}
+                  onChange={onChange}
+                  required
+                />
+              </div>
+              <br />
+
+              <div className='form-group'>
+                <input
+                  type='datetime-local'
+                  placeholder='Arrival Time'
+                  name='arrival_time'
+                  className='form-control'
+                  value={ticket.arrival_time}
+                  onChange={onChange}
+                  required
+                />
+              </div>
+              <br />
+
+              <div className='form-group'>
+                <input
+                  type='text'
+                  placeholder='Seat Number (Optional)'
+                  name='seat_number'
+                  className='form-control'
+                  value={ticket.seat_number}
                   onChange={onChange}
                 />
               </div>
               <br />
 
-              <div className="form-group">
+              <div className='form-group'>
                 <select
-                  name="seat_class"
-                  className="form-control"
-                  value={ticket.seat_class}
+                  name='class'
+                  className='form-control'
+                  value={ticket.class}
                   onChange={onChange}
+                  required
                 >
-                  <option value="">Select Seat Class</option>
-                  <option value="Economy">Economy</option>
-                  <option value="Business">Business</option>
-                  <option value="First Class">First Class</option>
+                  <option value=''>Select Class</option>
+                  <option value='First Class'>First Class</option>
+                  <option value='Second Class'>Second Class</option>
+                  <option value='Sleeper'>Sleeper</option>
+                  <option value='General'>General</option>
                 </select>
               </div>
               <br />
 
-              <input
-                type="submit"
-                className="btn btn-outline-warning btn-block mt-4"
-                value="Reserve Ticket"
-              />
+              <div className='form-group'>
+                <input
+                  type='number'
+                  placeholder='Fare'
+                  name='fare'
+                  className='form-control'
+                  value={ticket.fare}
+                  onChange={onChange}
+                  required
+                />
+              </div>
+              <br />
+
+              <button
+                type='submit'
+                className='btn btn-outline-warning btn-block mt-4'
+              >
+                Create Ticket
+              </button>
             </form>
           </div>
         </div>
