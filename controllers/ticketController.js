@@ -1,9 +1,9 @@
-const TrainTicketReservation = require('../models/ticketModels'); // Adjust the path to your model
+const ticketModels = require('../models/ticketModels');
 
 // Create a new train ticket reservation
 exports.createReservation = async (req, res) => {
   try {
-    let newReservation = new TrainTicketReservation({
+    let newReservation = new ticketModels({
       passenger_name: req.body.passenger_name,
             passenger_email: req.body.passenger_email,
             train_number: req.body.train_number,
@@ -15,8 +15,8 @@ exports.createReservation = async (req, res) => {
     } 
      );
 
-   savedReservation = await savedReservation.save();
-    res.send(savedReservation)
+   newReservation = await newReservation.save();
+    res.send(newReservation)
   } catch (error) {
     res.status(400).send( error.message );
   }
@@ -25,10 +25,10 @@ exports.createReservation = async (req, res) => {
 // Get all train ticket reservations
 exports.getAllReservations = async (req, res) => {
   try {
-    const reservations = await TrainTicketReservation.find();
-    res.status(200).json(reservations);
+    const reservations = await ticketModels.find();
+    res.send(reservations);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(400).send(error.message );
   }
 };
 
@@ -48,9 +48,18 @@ exports.getReservationById = async (req, res) => {
 // Update a train ticket reservation by ID
 exports.updateReservation = async (req, res) => {
   try {
-    const updatedReservation = await TrainTicketReservation.findByIdAndUpdate(
-      req.params.id,
-      req.body,
+    const updatedReservation = await ticketModels.findByIdAndUpdate(
+      req.params.id,{
+        passenger_name: req.body.passenger_name,
+            passenger_email: req.body.passenger_email,
+            train_number: req.body.train_number,
+            train_name: req.body.train_name,
+          departure_station : req.body.departure_station,
+           arrival_station : req.body.arrival_station,
+           seat_number : req.body.seat_number,
+           class : req.body.class
+    } ,
+      
       { new: true } // Return the updated document
     );
     if (!updatedReservation) {

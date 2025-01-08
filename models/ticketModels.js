@@ -35,5 +35,6 @@ const TrainTicketReservationSchema = new mongoose.Schema({
   }
  
 });
+const ticketModels = mongoose.model('ticket', TrainTicketReservationSchema);
+module.exports = ticketModels;
 
-module.exports = TrainTicketReservation = mongoose.model('train_ticket_reservation', TrainTicketReservationSchema);
