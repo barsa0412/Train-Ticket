@@ -28,7 +28,7 @@ exports.getAllReservations = async (req, res) => {
     const reservations = await ticketModels.find();
     res.send(reservations);
   } catch (error) {
-    res.status(400).send(error.message );
+    res.status(500).send(error.message );
   }
 };
 

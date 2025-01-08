@@ -13,9 +13,9 @@ connectDB();
 app.use(express.json());
 
 // Basic route for home page
-app.get("/", (req, res) => {
-    res.send("Home Page of the Train Ticket Reservation");
-});
+// app.get("/", (req, res) => {
+//     res.send("Home Page of the Train Ticket Reservation");
+// });
 
 // Use room routes with prefix '/api'
 app.use('/api', ticketRoutes);
