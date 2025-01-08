@@ -17,7 +17,7 @@ function UpdateTicketInfo() {
 
   useEffect(() => {
     axios
-      .get(`/api/tickets/${id}`)
+      .get(`https://train-ticket-reservation.onrender.com/api/reservations/${id}`)
       .then((res) => {
         setTicket({
           passengerName: res.data.passengerName,

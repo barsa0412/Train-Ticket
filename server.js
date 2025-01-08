@@ -2,23 +2,26 @@ const express = require('express');
 const connectDB = require('./config/db');
 const ticketRoutes = require('./routes/ticketRoutes'); // Import room routes
 const path = require('path');
+const cors = require("cors")
 require("dotenv").config( { path: "./config.env" } )
-const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Connect to MongoDB
-connectDB();
+// CONNECT TO DB
+connectDB()
 
-// Middleware to parse JSON requests
+// INITIATE APP
+const app = express()
+
+
+
+// HANDLE MIDDLEWARE
 app.use(express.json());
-
-// Basic route for home page
-// app.get("/", (req, res) => {
-//     res.send("Home Page of the Train Ticket Reservation");
-// });
+app.use(cors());
 
 // Use room routes with prefix '/api'
 app.use('/api', ticketRoutes);
+
+
 // SERVE STATIC FILES
 app.use(express.static(path.join(__dirname, "./client/build")));
 app.get("*", function (_, res) {

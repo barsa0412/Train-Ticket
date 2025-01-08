@@ -12,7 +12,7 @@ function ShowTicketList() {
 
   useEffect(() => {
     axios
-      .get(`/api/tickets`)
+      .get(`https://train-ticket-reservation.onrender.com/api/reservations`)
       .then((res) => {
         setTickets(res.data);
         setLoading(false); // Set loading to false once data is fetched

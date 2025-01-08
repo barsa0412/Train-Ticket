@@ -33,7 +33,7 @@ const ShowTicketDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`/api/tickets/${id}`)
+      .get(`https://train-ticket-reservation.onrender.com/api/reservations/${id}`)
       .then((res) => {
         setTicket(res.data);
       })

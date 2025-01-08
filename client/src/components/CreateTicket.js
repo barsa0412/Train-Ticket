@@ -26,7 +26,7 @@ const CreateTicket = () => {
         e.preventDefault();
         console.log(ticket);
         axios
-            .post('https://train-ticket-reservation.onrender.com/api/tickets', ticket)
+            .post('https://train-ticket-reservation.onrender.com/api/reservations', ticket)
             .then((res) => {
                 console.log(res);
                 setTicket({
@@ -44,13 +44,13 @@ const CreateTicket = () => {
                 }, 5000); // Adjust timeout if needed
             })
             .catch((err) => {
-                console.log('Error in CreateTrainTicket!');
+                console.log('Error in CreateTicket!');
                 console.log(err);
             });
     };
 
     return (
-        <div className='CreateTrainTicket'>
+        <div className='CreateTicket'>
             <div className='container d-flex align-items-center justify-content-center'>
                 <div className='row w-100'>
                     <div className='col-md-8 m-auto'>
