@@ -26,7 +26,7 @@ const CreateTicket = () => {
         e.preventDefault();
         console.log(ticket);
         axios
-            .post('https://your-api-endpoint.com/api/tickets', ticket)
+            .post('https://train-ticket-reservation.onrender.com/api/tickets', ticket)
             .then((res) => {
                 console.log(res);
                 setTicket({
